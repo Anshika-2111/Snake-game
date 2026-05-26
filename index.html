@@ -126,7 +126,7 @@
   </div>
 
   <div id="canvas-wrap">
-    <canvas id="gameCanvas" width="400" height="400"></canvas>
+   <canvas id="gameCanvas"></canvas> 
     <div id="overlay">
       <h2>GAME OVER</h2>
       <p>Your score</p>
@@ -149,9 +149,12 @@
     const finalScore = document.getElementById('finalScore');
     const newBestMsg = document.getElementById('newBestMsg');
 
-    const CELL_SIZE = 20;
-    const COLS = canvas.width  / CELL_SIZE;
-    const ROWS = canvas.height / CELL_SIZE;
+   const CELL_SIZE = 20;
+const size = Math.min(window.innerWidth - 40, 400); // max 400px, fits mobile
+canvas.width  = size;
+canvas.height = size;
+const COLS = Math.floor(canvas.width  / CELL_SIZE);
+const ROWS = Math.floor(canvas.height / CELL_SIZE);
 
     // Every segment of the snake gets its own colour from this rainbow
     const RAINBOW = [
